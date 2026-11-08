@@ -25,17 +25,17 @@ export const App = () => {
                 <Stack.Screen
                     name="ModuleAddScreen"
                     component={ModuleAddScreen}
-                    options={{ title: "Add modules" }}
+                    options={{ title: "Add module" }}
                 />
                 <Stack.Screen
                     name="ModuleViewScreen"
                     component={ModuleViewScreen}
-                    options={{ title: "View modules" }}
+                    options={{ title: "View module" }}
                 />
                 <Stack.Screen
                     name="ModuleModifyScreen"
                     component={ModuleModifyScreen}
-                    options={{ title: "Modify modules" }}
+                    options={{ title: "Modify module" }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
