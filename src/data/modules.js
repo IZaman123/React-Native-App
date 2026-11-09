@@ -6,8 +6,7 @@ const modules = [
         ModuleLevel: 4,
         ModuleLeaderID: 1,
         ModuleLeaderName: "Graeme Jones",
-        ModuleImage:
-            "https://images.freeimages.com/images/small-previews/9b8/electronic-components-2-1242738.jpg",
+        ModuleImage: "https://assets.codepen.io/2510825/courseGamesProgramming.png",
     },
     {
         ModuleID: 592225,
@@ -16,8 +15,7 @@ const modules = [
         ModuleLevel: 7,
         ModuleLeaderID: 2,
         ModuleLeaderName: "Graeme Jones",
-        ModuleImage:
-            "https://images.freeimages.com/images/small-previews/411/light-of-technology-1510575.jpg",
+        ModuleImage: "https://assets.codepen.io/2510825/courseImageBScCS.png",
     },
     {
         ModuleID: 329011,
@@ -26,7 +24,7 @@ const modules = [
         ModuleLevel: 6,
         ModuleLeaderID: 3,
         ModuleLeaderName: "Graeme Jones",
-        ModuleImage: "https://images.freeimages.com/images/small-previews/64b/vla-1-1315506.jpg",
+        ModuleImage: "https://assets.codepen.io/2510825/courseImageCI4305.jpg",
     },
     {
         ModuleID: 512346,
@@ -35,7 +33,7 @@ const modules = [
         ModuleLevel: 6,
         ModuleLeaderID: 4,
         ModuleLeaderName: "Graeme Jones",
-        ModuleImage: "https://images.freeimages.com/images/small-previews/293/cable-4-1243085.jpg",
+        ModuleImage: "https://assets.codepen.io/2510825/courseImageAdvancedDataModelling.png",
     },
     {
         ModuleID: 692345,
@@ -44,7 +42,7 @@ const modules = [
         ModuleLevel: 7,
         ModuleLeaderID: 5,
         ModuleLeaderName: "Graeme Jones",
-        ModuleImage: "https://images.freeimages.com/images/small-previews/fa1/cable-5-1243077.jpg",
+        ModuleImage: "https://assets.codepen.io/2510825/courseImageEthicalHacking.png",
     },
     {
         ModuleID: 906072,
@@ -53,8 +51,7 @@ const modules = [
         ModuleLevel: 7,
         ModuleLeaderID: 6,
         ModuleLeaderName: "Graeme Jones",
-        ModuleImage:
-            "https://images.freeimages.com/images/small-previews/930/towertv-3-1423238.jpg",
+        ModuleImage: "https://assets.codepen.io/2510825/courseImageNetworkAndMobileForensics.png",
     },
     {
         ModuleID: 394428,
@@ -63,8 +60,7 @@ const modules = [
         ModuleLevel: 5,
         ModuleLeaderID: 7,
         ModuleLeaderName: "Graeme Jones",
-        ModuleImage:
-            "https://images.freeimages.com/images/small-previews/cf5/cellphone-1313194.jpg",
+        ModuleImage: "https://assets.codepen.io/2510825/courseImagePracticalDataAnalystSkills.png",
     },
     {
         ModuleID: 699951,
@@ -73,8 +69,7 @@ const modules = [
         ModuleLevel: 7,
         ModuleLeaderID: 8,
         ModuleLeaderName: "Graeme Jones",
-        ModuleImage:
-            "https://images.freeimages.com/images/small-previews/4e8/sala-de-parto-03-1432033.jpg",
+        ModuleImage: "https://assets.codepen.io/2510825/courseImageStatisticsInPractice.png",
     },
 ];
 
