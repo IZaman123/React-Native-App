@@ -13,7 +13,7 @@ const ModuleItem = ({ module, onSelect }) => {
 };
 
 const styles = StyleSheet.create({
-    item: { paddingVertical: 15, borderTopWidth: 1, borderColor: "lightgray" },
+    item: { paddingVertical: 15, borderBottomWidth: 1, borderColor: "lightgray" },
     text: { fontSize: 16 },
 });
 
