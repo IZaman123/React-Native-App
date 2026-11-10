@@ -1,12 +1,14 @@
 import ModuleView from "../entity/modules/ModuleView";
 import Screen from "../layout/Screen";
 
-const ModuleViewScreen = ({ navigate, route }) => {
-    const { module, onDelete } = route.params;
+const ModuleViewScreen = ({ navigation, route }) => {
+    const { module, onDelete, onModify } = route.params;
+
+    const goToModifyScreen = () => navigation.replace("ModuleModifyScreen", { module, onModify });
 
     return (
         <Screen>
-            <ModuleView module={module} onDelete={onDelete} />
+            <ModuleView module={module} onDelete={onDelete} onModify={goToModifyScreen} />
         </Screen>
     );
 };
