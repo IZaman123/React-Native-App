@@ -1,12 +1,26 @@
-import { useState } from "react";
-import initialModules from "../../data/modules";
+import { useEffect, useState } from "react";
+import { Text } from "react-native";
+import API from "../API/API";
 import ModuleList from "../entity/modules/ModuleList";
 import Screen from "../layout/Screen";
 import { Button, ButtonTray } from "../UI/Button";
 import Icons from "../UI/Icons";
 
 const ModuleListScreen = ({ navigation }) => {
-    const [modules, setModules] = useState(initialModules);
+    const modulesEndpoint = "https://api.unibase.kuapps.uk/api/modules";
+
+    const [modules, setModules] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    const loadModules = async (endpoint) => {
+        const res = await API.get(endpoint);
+        setIsLoading(false);
+        if (res.isSuccess) setModules(res.result);
+    };
+
+    useEffect(() => {
+        loadModules(modulesEndpoint);
+    }, []);
 
     const handleDelete = (module) =>
         setModules(modules.filter((prev) => prev.ModuleID !== module.ModuleID));
@@ -44,6 +58,7 @@ const ModuleListScreen = ({ navigation }) => {
             <ButtonTray>
                 <Button label="Add" icon={<Icons.Add />} onClick={goToAddScreen} />
             </ButtonTray>
+            {isLoading && <Text>Loading records...</Text>}
             <ModuleList modules={modules} onSelect={goToViewScreen} />
         </Screen>
     );

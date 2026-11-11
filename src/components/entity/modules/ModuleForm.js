@@ -9,12 +9,12 @@ const defaultModule = {
     ModuleLevel: null,
     ModuleLeaderID: null,
     ModuleLeaderName: null,
-    ModuleImage: null,
+    ModuleImageURL: null,
 };
 
 const ModuleForm = ({ originalModule, onSubmit, onCancel }) => {
     defaultModule.ModuleCode = Math.floor(100000 + Math.random() * 900000);
-    defaultModule.ModuleImage =
+    defaultModule.ModuleImageURL =
         "https://assets.codepen.io/2510825/courseImageMobileApplicationDevelopment.jpg";
 
     const levels = [
@@ -23,7 +23,7 @@ const ModuleForm = ({ originalModule, onSubmit, onCancel }) => {
         { value: 5, label: "5 (Second year)" },
         { value: 6, label: "6 (Final year)" },
         { value: 7, label: "7 (Masters)" },
-    ]
+    ];
 
     const [module, setModule] = useState(originalModule || defaultModule);
 
@@ -64,8 +64,8 @@ const ModuleForm = ({ originalModule, onSubmit, onCancel }) => {
             />
             <Form.InputText
                 label={"Module image URL"}
-                value={module.ModuleImage}
-                onChange={(value) => handleChange("ModuleImage", value)}
+                value={module.ModuleImageURL}
+                onChange={(value) => handleChange("ModuleImageURL", value)}
             />
         </Form>
     );
