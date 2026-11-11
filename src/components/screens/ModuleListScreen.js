@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import { Text } from "react-native";
-import API from "../API/API";
+import useLoad from "../API/useLoad";
 import ModuleList from "../entity/modules/ModuleList";
 import Screen from "../layout/Screen";
 import { Button, ButtonTray } from "../UI/Button";
@@ -9,18 +8,7 @@ import Icons from "../UI/Icons";
 const ModuleListScreen = ({ navigation }) => {
     const modulesEndpoint = "https://api.unibase.kuapps.uk/api/modules";
 
-    const [modules, setModules] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-
-    const loadModules = async (endpoint) => {
-        const res = await API.get(endpoint);
-        setIsLoading(false);
-        if (res.isSuccess) setModules(res.result);
-    };
-
-    useEffect(() => {
-        loadModules(modulesEndpoint);
-    }, []);
+    const [modules, setModules, isLoading] = useLoad(modulesEndpoint);
 
     const handleDelete = (module) =>
         setModules(modules.filter((prev) => prev.ModuleID !== module.ModuleID));
