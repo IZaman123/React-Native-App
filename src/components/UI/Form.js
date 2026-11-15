@@ -1,3 +1,4 @@
+import { Picker } from "@react-native-picker/picker";
 import {
     KeyboardAvoidingView,
     Platform,
@@ -9,7 +10,6 @@ import {
 } from "react-native";
 import { Button, ButtonTray } from "./Button";
 import Icons from "./Icons";
-import { Picker } from "@react-native-picker/picker";
 
 const Form = ({ children, onSubmit, onCancel, submitLabel, submitIcon }) => {
     return (
@@ -36,21 +36,27 @@ const InputText = ({ label, value, onChange }) => {
     );
 };
 
-const InputSelect = ({ label, prompt, options, value, onChange }) => {
+const InputSelect = ({ label, prompt, options, value, onChange, isLoading = false }) => {
     return (
         <View style={styles.item}>
             <Text style={styles.itemLabel}>{label}</Text>
-            <Picker
-                mode="dropdown"
-                selectedValue={value}
-                onValueChange={onChange}
-                style={styles.itemPickerStyle}
-            >
-                <Picker.Item value={null} label={prompt} style={styles.itemPickerPromptStyle} />
-                {options.map((o, i) => (
-                    <Picker.Item key={i} value={o.value} label={o.label} />
-                ))}
-            </Picker>
+            {isLoading ? (
+                <View style={styles.itemLoading}>
+                    <Text style={styles.itemLoadingText}>Loading records...</Text>
+                </View>
+            ) : (
+                <Picker
+                    mode="dropdown"
+                    selectedValue={value}
+                    onValueChange={onChange}
+                    style={styles.itemPickerStyle}
+                >
+                    <Picker.Item value={null} label={prompt} style={styles.itemPickerPromptStyle} />
+                    {options.map((o, i) => (
+                        <Picker.Item key={i} value={o.value} label={o.label} />
+                    ))}
+                </Picker>
+            )}
         </View>
     );
 };
@@ -84,6 +90,16 @@ const styles = StyleSheet.create({
         backgroundColor: "whitesmoke",
     },
     itemPickerPromptStyle: {
+        color: "gray",
+    },
+    itemLoading: {
+        height: 50,
+        backgroundColor: "mistyrose",
+        justifyContent: "center",
+        paddingLeft: 10,
+    },
+    itemLoadingText: {
+        fontSize: 16,
         color: "gray",
     },
 });

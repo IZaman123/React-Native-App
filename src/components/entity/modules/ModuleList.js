@@ -1,20 +1,14 @@
-import { ScrollView, StyleSheet } from "react-native";
+import { ScrollView } from "react-native";
 import ModuleItem from "./ModuleItem";
 
 const ModuleList = ({ modules, onSelect }) => {
     return (
-        <ScrollView style={styles.container}>
+        <ScrollView>
             {modules.map((module) => {
-                return (
-                    <ModuleItem key={module.ModuleCode} module={module} onSelect={onSelect} />
-                );
+                return <ModuleItem key={module.ModuleCode} module={module} onSelect={onSelect} />;
             })}
         </ScrollView>
     );
 };
-
-const styles = StyleSheet.create({
-    container: { marginBottom: 50 },
-});
 
 export default ModuleList;

@@ -30,8 +30,8 @@ const ModuleForm = ({ originalModule, onSubmit, onCancel }) => {
     ];
 
     const [module, setModule] = useState(originalModule || defaultModule);
-    const [years] = useLoad(yearsEndpoint);
-    const [leaders] = useLoad(staffEndpoint);
+    const [years, , isYearsLoading] = useLoad(yearsEndpoint);
+    const [leaders, , isLeadersLoading] = useLoad(staffEndpoint);
 
     const handleChange = (field, value) => setModule({ ...module, [field]: value });
     const handleSubmit = () => onSubmit(module);
@@ -75,6 +75,7 @@ const ModuleForm = ({ originalModule, onSubmit, onCancel }) => {
                 options={cohorts}
                 value={module.ModuleYearID}
                 onChange={(value) => handleChange("ModuleYearID", value)}
+                isLoading={isYearsLoading}
             />
             <Form.InputSelect
                 label={"Module leader"}
@@ -82,6 +83,7 @@ const ModuleForm = ({ originalModule, onSubmit, onCancel }) => {
                 options={staff}
                 value={module.ModuleLeaderID}
                 onChange={(value) => handleChange("ModuleLeaderID", value)}
+                isLoading={isLeadersLoading}
             />
             <Form.InputText
                 label={"Module image URL"}

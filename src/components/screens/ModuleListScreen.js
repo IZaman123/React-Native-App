@@ -1,4 +1,4 @@
-import { Alert, Text } from "react-native";
+import { ActivityIndicator, Alert, StyleSheet, Text, View } from "react-native";
 import API from "../API/API";
 import useLoad from "../API/useLoad";
 import ModuleList from "../entity/modules/ModuleList";
@@ -9,7 +9,7 @@ import Icons from "../UI/Icons";
 const ModuleListScreen = ({ navigation }) => {
     const modulesEndpoint = "https://api.unibase.kuapps.uk/api/modules";
 
-    const [modules,, isLoading, loadModules] = useLoad(modulesEndpoint);
+    const [modules, , isLoading, loadModules] = useLoad(modulesEndpoint);
 
     const onAdd = async (module) => {
         const res = await API.post(modulesEndpoint, module);
@@ -43,13 +43,34 @@ const ModuleListScreen = ({ navigation }) => {
 
     return (
         <Screen>
-            <ButtonTray>
-                <Button label="Add" icon={<Icons.Add />} onClick={goToAddScreen} />
-            </ButtonTray>
-            {isLoading && <Text>Loading records...</Text>}
-            <ModuleList modules={modules} onSelect={goToViewScreen} />
+            <View style={styles.container}>
+                <ButtonTray>
+                    <Button label="Add" icon={<Icons.Add />} onClick={goToAddScreen} />
+                </ButtonTray>
+                {isLoading && (
+                    <View>
+                        <Text style={styles.loading}>
+                            Retrieving records from {modulesEndpoint}...
+                        </Text>
+                        <ActivityIndicator size={"large"} />
+                    </View>
+                )}
+                <ModuleList modules={modules} onSelect={goToViewScreen} />
+            </View>
         </Screen>
     );
 };
+
+const styles = StyleSheet.create({
+    container: {
+        gap: 15,
+    },
+    loading: {
+        height: 100,
+        gap: 20,
+        justifyContent: "center",
+        alignItems: "center",
+    },
+});
 
 export default ModuleListScreen;
