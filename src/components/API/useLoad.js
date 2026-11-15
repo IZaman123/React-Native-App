@@ -6,6 +6,7 @@ const useLoad = (loadEndpoint) => {
     const [isLoading, setIsLoading] = useState(true);
 
     const loadRecords = async (endpoint) => {
+        setIsLoading(true);
         const res = await API.get(endpoint);
         if (res.isSuccess) setRecords(res.result);
         setIsLoading(false);
