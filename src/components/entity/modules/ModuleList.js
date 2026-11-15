@@ -14,7 +14,7 @@ const ModuleList = ({ modules, onSelect }) => {
 };
 
 const styles = StyleSheet.create({
-    container: {},
+    container: { marginBottom: 50 },
 });
 
 export default ModuleList;

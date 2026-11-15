@@ -1,4 +1,5 @@
-import { Text } from "react-native";
+import { Alert, Text } from "react-native";
+import API from "../API/API";
 import useLoad from "../API/useLoad";
 import ModuleList from "../entity/modules/ModuleList";
 import Screen from "../layout/Screen";
@@ -8,33 +9,32 @@ import Icons from "../UI/Icons";
 const ModuleListScreen = ({ navigation }) => {
     const modulesEndpoint = "https://api.unibase.kuapps.uk/api/modules";
 
-    const [modules, setModules, isLoading] = useLoad(modulesEndpoint);
+    const [modules,, isLoading, loadModules] = useLoad(modulesEndpoint);
 
-    const handleDelete = (module) =>
-        setModules(modules.filter((prev) => prev.ModuleID !== module.ModuleID));
-
-    const handleAdd = (module) => setModules([...modules, module]);
-
-    const handleModify = (updatedModule) =>
-        setModules(
-            modules.map((module) =>
-                module.ModuleID === updatedModule.ModuleID ? updatedModule : module,
-            ),
-        );
-
-    const onDelete = (module) => {
-        handleDelete(module);
-        navigation.goBack();
+    const onAdd = async (module) => {
+        const res = await API.post(modulesEndpoint, module);
+        if (res.isSuccess) {
+            loadModules(modulesEndpoint);
+            navigation.goBack();
+        } else Alert.alert(res.message);
     };
 
-    const onAdd = (module) => {
-        handleAdd(module);
-        navigation.goBack();
+    const onModify = async (module) => {
+        const putEndpoint = `${modulesEndpoint}/${module.ModuleID}`;
+        const res = await API.put(putEndpoint, module);
+        if (res.isSuccess) {
+            loadModules(modulesEndpoint);
+            navigation.replace("ModuleViewScreen", { module, onDelete, onModify });
+        } else Alert.alert(res.message);
     };
 
-    const onModify = (module) => {
-        handleModify(module);
-        navigation.replace("ModuleViewScreen", { module, onDelete, onModify });
+    const onDelete = async (module) => {
+        const deleteEndpoint = `${modulesEndpoint}/${module.ModuleID}`;
+        const res = await API.delete(deleteEndpoint, module);
+        if (res.isSuccess) {
+            loadModules(modulesEndpoint);
+            navigation.goBack();
+        } else Alert.alert(res.message);
     };
 
     const goToViewScreen = (module) =>
