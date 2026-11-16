@@ -3,7 +3,15 @@ import FullWidthImage from "react-native-fullwidth-image";
 import { Button, ButtonTray } from "../../UI/Button";
 import Icons from "../../UI/Icons";
 
-const ModuleView = ({ module, imageURL, onDelete, onModify, onCamera }) => {
+const ModuleView = ({
+    module,
+    imageURL,
+    coordinates,
+    onDelete,
+    onModify,
+    onCamera,
+    onLocation,
+}) => {
     const handleDelete = () => onDelete(module);
 
     const requestDelete = () =>
@@ -26,12 +34,25 @@ const ModuleView = ({ module, imageURL, onDelete, onModify, onCamera }) => {
                 <Text styles={styles.text}>
                     {module.ModuleLeaderName} <Text style={styles.dimText}>(Module Leader)</Text>
                 </Text>
+                {coordinates && (
+                    <Text styles={styles.text}>
+                        Location {coordinates.latitude.toFixed(6)},{" "}
+                        {coordinates.longitude.toFixed(6)}
+                    </Text>
+                )}
             </View>
 
             <ButtonTray>
                 <Button icon={<Icons.Edit />} label="Modify" onClick={onModify}></Button>
                 <Button icon={<Icons.Camera />} label="Camera" onClick={onCamera} />
-                <Button icon={<Icons.Delete />} label="Delete" onClick={requestDelete}></Button>
+                <Button icon={<Icons.Location />} label="Location" onClick={onLocation} />
+                <Button
+                    icon={<Icons.Delete />}
+                    label="Delete"
+                    styleButton={{ backgroundColor: "mistyrose" }}
+                    styleLabel={{ color: "red" }}
+                    onClick={requestDelete}
+                ></Button>
             </ButtonTray>
         </View>
     );

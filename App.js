@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CameraScreen from "./src/components/screens/CameraScreen";
+import LocationScreen from "./src/components/screens/LocationScreen";
 import ModuleAddScreen from "./src/components/screens/ModuleAddScreen";
 import ModuleListScreen from "./src/components/screens/ModuleListScreen";
 import ModuleModifyScreen from "./src/components/screens/ModuleModifyScreen";
@@ -37,10 +38,16 @@ export const App = () => {
                     name="ModuleModifyScreen"
                     component={ModuleModifyScreen}
                     options={{ title: "Modify module" }}
-                /><Stack.Screen
+                />
+                <Stack.Screen
                     name="CameraScreen"
                     component={CameraScreen}
                     options={{ title: "Capture picture" }}
+                />
+                <Stack.Screen
+                    name="LocationScreen"
+                    component={LocationScreen}
+                    options={{ title: "Get location" }}
                 />
             </Stack.Navigator>
         </NavigationContainer>

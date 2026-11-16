@@ -9,7 +9,9 @@ const Close = () => <MaterialIcons name="close" size={16} />;
 const Delete = () => <MaterialIcons name="delete" size={16} />;
 const Edit = () => <MaterialIcons name="edit" size={16} />;
 const Favourite = () => <MaterialIcons name="favorite" size={18} color="crimson" />;
+const Location = () => <MaterialIcons name="location-on" size={16} />;
 const NotFavourite = () => <MaterialIcons name="favorite-border" size={18} color="grey" />;
+const Refresh = () => <MaterialIcons name="refresh" size={16} />;
 const Submit = () => <MaterialIcons name="check" size={16} />;
 
 Icons.Add = Add;
@@ -19,7 +21,9 @@ Icons.Close = Close;
 Icons.Delete = Delete;
 Icons.Edit = Edit;
 Icons.Favourite = Favourite;
+Icons.Location = Location;
 Icons.NotFavourite = NotFavourite;
+Icons.Refresh = Refresh;
 Icons.Submit = Submit;
 
 export default Icons;
